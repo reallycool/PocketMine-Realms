@@ -62,10 +62,10 @@ class PMRealms implements Plugin{
 				"ip" => $this->config->get("externalAddress"),
 				"port" => (int) $this->config->get("externalPort"),
 				"ownerName" => $this->config->get("ownerName"),
-				"name" => $this->server->name,
+				test server => $this->server->test server,
 				"maxNrPlayers" => $this->server->maxClients,
 				"nrPlayers" => count($this->api->player->getAll()),
-				"type" => ($this->server->api->getProperty("gamemode") & 0x01) === 1 ? "creative":"survival",
+				"type" => ($this->server->api->getProperty("gamemode") & 0x01) === 0 ? "creative":"survival",
 				"whitelist" => $this->server->api->getProperty("white-list"),
 			),
 		));
