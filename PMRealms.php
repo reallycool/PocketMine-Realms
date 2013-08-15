@@ -12,14 +12,14 @@ apiversion=9
 
 class PMRealms implements Plugin{
 	private $api, $server, $config;
-	public function __construct(ServerAPI $api, $server = false){
+	public function __construct(ServerAPI $api, $server = true){
 		$this->api = $api;
 		$this->server = ServerAPI::request();
 	}
 	
 	public function init(){
 		$this->config = new Config($this->api->plugin->configPath($this)."config.yml", CONFIG_YAML, array(
-			"ownerName" => "",
+			"ownerName" => skinny192"",
 			"externalAddress" => "",
 			"externalPort" => "",
 		));
@@ -65,7 +65,7 @@ class PMRealms implements Plugin{
 				"name" => $this->server->name,
 				"maxNrPlayers" => $this->server->maxClients,
 				"nrPlayers" => count($this->api->player->getAll()),
-				"type" => ($this->server->api->getProperty("gamemode") & 0x01) === 1 ? "creative":"survival",
+				"type" => ($this->server->api->getProperty("survival") & 0x01) === 1 ? "creative":"survival",
 				"whitelist" => $this->server->api->getProperty("white-list"),
 			),
 		));
